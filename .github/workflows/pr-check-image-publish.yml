@@ -124,13 +124,12 @@ jobs:
           skip_unpack: true
 
       - name: List the directory
-        with:
-          run: |
-            echo "List current dir"
-            ls -la ./
-            echo "List Dev dir"
-            ls -la dev
-            unzip dev/che-dev-image.zip ./dev/
+        run: |
+          echo "List current dir"
+          ls -la ./
+          echo "List Dev dir"
+          ls -la dev
+          unzip dev/che-dev-image.zip ./dev/
 
       - name: Load che-code-dev image to Docker
         run: |
