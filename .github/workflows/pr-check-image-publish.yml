@@ -115,13 +115,21 @@ jobs:
         run: |
           df -h
 
-      - name: Download che-dev image
-        uses: dawidd6/action-download-artifact@v2
+      # - name: Download che-dev image
+      #   uses: dawidd6/action-download-artifact@v2
+      #   with:
+      #     workflow: ${{ github.event.workflow_run.workflow_id }}
+      #     name: che-dev-image
+      #     path: dev/
+      #     skip_unpack: true
+
+      - name: Download che-dev image V2
+        uses: actions/download-artifact@v3
         with:
-          workflow: ${{ github.event.workflow_run.workflow_id }}
+          # name: my-artifact
+          # path: ~/download/path
           name: che-dev-image
-          path: dev/
-          skip_unpack: true
+          path: dev
 
       - name: List the directory
         run: |
