@@ -75,22 +75,25 @@ jobs:
   #       with:
   #         image: "che-code-image"
 
-  #     - name: Store PR info
-  #       run: |
-  #         echo "${{ github.event.number }}" > PR_NUMBER
-  #         echo "${{ github.event.pull_request.head.sha }}" > PR_SHA
+  store-pull-request-info:
+    name: dev
+    runs-on: ubuntu-22.04
+      - name: Store PR info
+        run: |
+          echo "${{ github.event.number }}" > PR_NUMBER
+          echo "${{ github.event.pull_request.head.sha }}" > PR_SHA
 
-  #     - name: Upload PR NUMBER
-  #       uses: actions/upload-artifact@v3
-  #       with:
-  #         name: pull-request-number
-  #         path: PR_NUMBER
+      - name: Upload PR NUMBER
+        uses: actions/upload-artifact@v3
+        with:
+          name: pull-request-number
+          path: PR_NUMBER
 
-  #     - name: Upload PR SHA
-  #       uses: actions/upload-artifact@v3
-  #       with:
-  #         name: pull-request-sha
-  #         path: PR_SHA
+      - name: Upload PR SHA
+        uses: actions/upload-artifact@v3
+        with:
+          name: pull-request-sha
+          path: PR_SHA
 
   dev:
     name: dev
@@ -99,9 +102,21 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Display docker images
+        run: |
+          docker images
+
+      - name: Disk free
+        run: |
+          df -h
+
       - name: Cleanup docker images
         run: |
           docker system prune -af
+
+      - name: Disk free
+        run: |
+          df -h
 
       - name: Docker Build
         run: |

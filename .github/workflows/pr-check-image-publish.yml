@@ -105,6 +105,10 @@ jobs:
       #     docker push ${IMAGE_NAME}
       #     echo "IMAGE_NAME=${IMAGE_NAME}" >> $GITHUB_ENV
 
+      - name: Display docker images
+        run: |
+          docker images
+
       - name: Cleanup images
         run: |
           # ls -la assembly
