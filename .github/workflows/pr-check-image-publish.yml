@@ -82,21 +82,21 @@ jobs:
         run: |
           df -h
 
-      - name: Download che-code image
-        uses: dawidd6/action-download-artifact@v2
-        with:
-          workflow: ${{ github.event.workflow_run.workflow_id }}
-          name: action_image_artifact_che-code-image
-          path: assembly/
+      # - name: Download che-code image
+      #   uses: dawidd6/action-download-artifact@v2
+      #   with:
+      #     workflow: ${{ github.event.workflow_run.workflow_id }}
+      #     name: action_image_artifact_che-code-image
+      #     path: assembly/
 
-      - name: Load che-code image to Docker
-        run: |
-          ls -la assembly
-          docker load -i assembly/che-code-image
+      # - name: Load che-code image to Docker
+      #   run: |
+      #     ls -la assembly
+      #     docker load -i assembly/che-code-image
 
-      - name: Display docker images
-        run: |
-          docker images
+      # - name: Display docker images
+      #   run: |
+      #     docker images
 
       # - name: Docker Push
       #   run: |
@@ -107,29 +107,38 @@ jobs:
 
       - name: Cleanup images
         run: |
-          ls -la assembly
-          rm -rf assembly
+          # ls -la assembly
+          # rm -rf assembly
           docker system prune -af
 
       - name: Disk free
         run: |
           df -h
 
-      # - name: Download che-dev image
+      - name: Download che-dev image
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          workflow: ${{ github.event.workflow_run.workflow_id }}
+          # name: che-dev-image
+          name: action_image_artifact_che-dev-image
+          path: dev/
+          # skip_unpack: true
+
+      # - name: Download che-dev image V2
+      #   uses: actions/download-artifact@v3
+      #   with:
+      #     # name: my-artifact
+      #     # path: ~/download/path
+      #     name: che-dev-image
+      #     path: dev
+
+      # - name: Download che-code image
       #   uses: dawidd6/action-download-artifact@v2
       #   with:
       #     workflow: ${{ github.event.workflow_run.workflow_id }}
-      #     name: che-dev-image
-      #     path: dev/
-      #     skip_unpack: true
+      #     name: action_image_artifact_che-code-image
+      #     path: assembly/
 
-      - name: Download che-dev image V2
-        uses: actions/download-artifact@v3
-        with:
-          # name: my-artifact
-          # path: ~/download/path
-          name: che-dev-image
-          path: dev
 
       - name: List the directory
         run: |
