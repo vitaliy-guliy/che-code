@@ -81,6 +81,7 @@ jobs:
   store-pull-request-info:
     name: store-pull-request-info
     runs-on: ubuntu-22.04
+    steps:
       - name: Store PR info
         run: |
           echo "${{ github.event.number }}" > PR_NUMBER
