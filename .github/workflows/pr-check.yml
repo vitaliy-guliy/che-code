@@ -10,7 +10,10 @@
 name: Pull Request Check
 
 # Trigger the workflow on pull request
-on: [pull_request]
+# on: [pull_request]
+on:
+  pull_request:
+    type: opened
 
 jobs:
 
