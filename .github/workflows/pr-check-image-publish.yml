@@ -123,10 +123,10 @@ jobs:
         uses: dawidd6/action-download-artifact@v2
         with:
           workflow: ${{ github.event.workflow_run.workflow_id }}
-          # name: che-dev-image
-          name: action_image_artifact_che-dev-image
+          name: che-dev-image
+          # name: action_image_artifact_che-dev-image
           path: dev/
-          # skip_unpack: true
+          skip_unpack: true
 
       # - name: Download che-dev image V2
       #   uses: actions/download-artifact@v3
