@@ -88,6 +88,10 @@ jobs:
           run-id: ${{ github.event.workflow_run.id }}
           github-token: ${{ github.token }}
 
+      - name: List downloaded files
+        run: |
+          ls -lah
+
       # - name: Download che-code docker image artifact
       #   uses: actions/download-artifact@v4
       #   with:
