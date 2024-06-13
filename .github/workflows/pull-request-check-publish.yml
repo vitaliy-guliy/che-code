@@ -24,12 +24,14 @@ jobs:
 
       - name: Print original workflow ID
         run: |
-          echo "Original Workflow: [${{ github.event.workflow_run.workflow_id }}]"
+          echo "Original Workflow ID: [${{ github.event.workflow_run.workflow_id }}]"
+          echo "Original Run ID: [${{ github.event.workflow_run.id }}]"
 
       - name: Download Pull Request Number artifact
         uses: actions/download-artifact@v4
         with:
-          run-id: ${{ github.event.workflow_run.workflow_id }}
+          # run-id: ${{ github.event.workflow_run.workflow_id }}
+          run-id: ${{ github.event.workflow_run.id }}
           name: pull-request-number
 
       # - name: Download Pull Request Number artifact
