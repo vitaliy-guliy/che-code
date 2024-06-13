@@ -83,25 +83,30 @@ jobs:
       - name: Download che-code docker image artifact
         uses: actions/download-artifact@v4
         with:
-          name: che-code
+          pattern: che-*
           path: .
           run-id: ${{ github.event.workflow_run.id }}
           github-token: ${{ github.token }}
 
-      - name: Download che-dev docker image artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: che-dev
-          path: .
-          run-id: ${{ github.event.workflow_run.id }}
-          github-token: ${{ github.token }}
+      # - name: Download che-code docker image artifact
+      #   uses: actions/download-artifact@v4
+      #   with:
+      #     name: che-code
+      #     path: .
+      #     run-id: ${{ github.event.workflow_run.id }}
+      #     github-token: ${{ github.token }}
 
-      - name: Load che-code Docker image
+      # - name: Download che-dev docker image artifact
+      #   uses: actions/download-artifact@v4
+      #   with:
+      #     name: che-dev
+      #     path: .
+      #     run-id: ${{ github.event.workflow_run.id }}
+      #     github-token: ${{ github.token }}
+
+      - name: Load Docker images
         run: |
           docker load -i che-code.tgz
-
-      - name: Load che-dev Docker image
-        run: |
           docker load -i che-dev.tgz
 
       - name: Push che-code docker image
@@ -131,5 +136,5 @@ jobs:
               issue_number: process.env._PR_NUMBER,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: `Pull Request images published ✨\nEditor: [${process.env._CHE_CODE_IMAGE}](https://${process.env._CHE_CODE_IMAGE})\nDev image: [${process.env._CHE_DEV_IMAGE}](https://${process.env._CHE_DEV_IMAGE})`
+              body: `Pull Request images published ✨\n\nEditor: [${process.env._CHE_CODE_IMAGE}](https://${process.env._CHE_CODE_IMAGE})\nDev image: [${process.env._CHE_DEV_IMAGE}](https://${process.env._CHE_DEV_IMAGE})`
             })
