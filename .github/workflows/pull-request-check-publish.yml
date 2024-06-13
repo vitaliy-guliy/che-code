@@ -131,5 +131,5 @@ jobs:
               issue_number: process.env._PR_NUMBER,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: `Pull Request images published ✨\nEditor image: ${process.env._CHE_CODE_IMAGE}\nDev image: ${process.env._CHE_DEV_IMAGE}`
+              body: `Pull Request images published ✨\nEditor: [${process.env._CHE_CODE_IMAGE}](https://${process.env._CHE_CODE_IMAGE})\nDev image: [${process.env._CHE_DEV_IMAGE}](https://${process.env._CHE_DEV_IMAGE})`
             })
