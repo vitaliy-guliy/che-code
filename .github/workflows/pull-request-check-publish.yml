@@ -26,6 +26,7 @@ jobs:
         run: |
           echo "Original Workflow ID: [${{ github.event.workflow_run.workflow_id }}]"
           echo "Original Run ID: [${{ github.event.workflow_run.id }}]"
+          echo "Original pull_requests: [${{ github.event.workflow_run.pull_requests }}]"
 
       - name: Download Pull Request Number artifact
         uses: actions/download-artifact@v4
@@ -110,8 +111,8 @@ jobs:
 
       - name: Load Docker images
         run: |
-          docker load -i che-code.tgz
-          docker load -i che-dev.tgz
+          docker load -i che-code/che-code.tgz
+          docker load -i che-dev/che-dev.tgz
 
       - name: Push che-code docker image
         run: |
