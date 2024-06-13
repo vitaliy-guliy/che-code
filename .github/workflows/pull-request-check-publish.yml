@@ -32,6 +32,7 @@ jobs:
         with:
           # run-id: ${{ github.event.workflow_run.workflow_id }}
           run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ github.token }}
           name: pull-request-number
 
       # - name: Download Pull Request Number artifact
