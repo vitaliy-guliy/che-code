@@ -90,7 +90,7 @@ jobs:
 
       - name: List downloaded files
         run: |
-          ls -lah
+          ls -lahR
 
       # - name: Download che-code docker image artifact
       #   uses: actions/download-artifact@v4
