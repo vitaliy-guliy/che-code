@@ -128,7 +128,7 @@ jobs:
          script: |
            const { repo: { owner, repo } } = context;
            await github.rest.issues.createComment({
-              issue_number: process.env.PR_NUMBER,
+              issue_number: process.env._PR_NUMBER,
               owner: context.repo.owner,
               repo: context.repo.repo,
               body: `Pull Request images published ✨\nEditor image: ${process.env._CHE_CODE_IMAGE}\nDev image: ${process.env._CHE_DEV_IMAGE}`
