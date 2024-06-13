@@ -31,9 +31,9 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           # run-id: ${{ github.event.workflow_run.workflow_id }}
+          name: pull-request-number
           run-id: ${{ github.event.workflow_run.id }}
           github-token: ${{ github.token }}
-          name: pull-request-number
 
       # - name: Download Pull Request Number artifact
       #   uses: dawidd6/action-download-artifact@v2
@@ -85,12 +85,16 @@ jobs:
         with:
           name: che-code
           path: .
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ github.token }}
 
       - name: Download che-dev docker image artifact
         uses: actions/download-artifact@v4
         with:
           name: che-dev
           path: .
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ github.token }}
 
       - name: Load che-code Docker image
         run: |
