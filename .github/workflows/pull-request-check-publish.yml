@@ -22,6 +22,10 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
 
+      - name: Print original workflow ID
+        run: |
+          echo "Original Workflow: [${{ github.event.workflow_run.workflow_id }}]"
+
       - name: Download Pull Request Number artifact
         uses: actions/download-artifact@v4
         with:
