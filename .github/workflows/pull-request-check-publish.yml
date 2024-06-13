@@ -55,22 +55,6 @@ jobs:
         run: |
           ls -lahR
 
-      # - name: Download che-code docker image artifact
-      #   uses: actions/download-artifact@v4
-      #   with:
-      #     name: che-code
-      #     path: .
-      #     run-id: ${{ github.event.workflow_run.id }}
-      #     github-token: ${{ github.token }}
-
-      # - name: Download che-dev docker image artifact
-      #   uses: actions/download-artifact@v4
-      #   with:
-      #     name: che-dev
-      #     path: .
-      #     run-id: ${{ github.event.workflow_run.id }}
-      #     github-token: ${{ github.token }}
-
       - name: Load Docker images
         run: |
           docker load -i che-code/che-code.tgz
