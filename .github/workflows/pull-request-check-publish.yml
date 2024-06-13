@@ -44,6 +44,7 @@ jobs:
       - name: Grab Pull Request number
         run: |
           pr_number=$(cat "PR_NUMBER")
+          echo "Use PR ${pr_number}"
           if ! [[ "$pr_number" =~ ^[0-9]+$ ]]; then
             echo "pr number invalid"
             exit 1
