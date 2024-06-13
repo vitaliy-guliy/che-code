@@ -27,6 +27,10 @@ jobs:
           echo "Original Workflow ID: [${{ github.event.workflow_run.workflow_id }}]"
           echo "Original Run ID: [${{ github.event.workflow_run.id }}]"
           echo "Original pull_requests: [${{ github.event.workflow_run.pull_requests }}]"
+          echo '------------------------------------------'
+          my_array=${{ github.event.workflow_run.pull_requests }}
+          printf '%s\n' "${my_array[@]}"
+          echo '------------------------------------------'
 
       - name: Download Pull Request Number artifact
         uses: actions/download-artifact@v4
