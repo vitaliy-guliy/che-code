@@ -102,7 +102,7 @@ jobs:
 
       - name: Load che-dev Docker image
         run: |
-          docker load -i che-code.tgz
+          docker load -i che-dev.tgz
 
       - name: Push che-code docker image
         run: |
